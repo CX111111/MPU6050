@@ -113,7 +113,7 @@ int main(void)
 	  {
 	      if (1)
 	      {
-		  //OLED显示四元数据
+		  //OLED显示欧拉角
 //	       	 OLED_ShowString(1, 1,"pitch:");
 //	       	 OLED_ShowString(2, 1,"yaw:");
 //	       	 OLED_ShowString(3, 1,"roll:");
