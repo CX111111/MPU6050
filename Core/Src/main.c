@@ -100,34 +100,35 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  /*   ȡATK-MS6050 DMP           */
-	          ret  = atk_ms6050_dmp_get_data(&pit, &rol, &yaw);
-	          /*   ȡATK-MS6050   ٶ ֵ */
-	          ret += atk_ms6050_get_accelerometer(&acc_x, &acc_y, &acc_z);
-	          /*   ȡATK-MS6050      ֵ */
-	          ret += atk_ms6050_get_gyroscope(&gyr_x, &gyr_y, &gyr_z);
-	          /*   ȡATK-MS6050 ¶ ֵ */
-	          ret += atk_ms6050_get_temperature(&temp);
-	          if (ret == 0)
-	          {
-	              if (1)
-	              {
-	            	  //OLED显示四元数据
-//	            	  OLED_ShowString(1, 1,"pitch:");
-//	            	  	 OLED_ShowString(2, 1,"yaw:");
-//	            	  	 OLED_ShowString(3, 1,"roll:");
-//	            	  	 OLED_ShowSignedNum(1, 7, pit, 4);
-//	            	  	 OLED_ShowSignedNum(2, 7, yaw, 4);
-//	            	  	 OLED_ShowSignedNum(3, 7, rol,4);
-	            	  //OLED显示原始数据
-	            	  OLED_ShowSignedNum(1, 1,acc_x,4);
-					 OLED_ShowSignedNum(2, 1,acc_y,4);
-					 OLED_ShowSignedNum(3, 1,acc_x,4);
-					 OLED_ShowSignedNum(1, 8, gyr_x, 4);
-					 OLED_ShowSignedNum(2, 8, gyr_y, 4);
-					 OLED_ShowSignedNum(3, 8, gyr_z,4);
-	              }
-	          }
+	  /*   从ATK-MS6050 DMP获取数据           */
+	  ret  = atk_ms6050_dmp_get_data(&pit, &rol, &yaw);
+	  /*  从ATK-MS6050获取加速度数据 ֵ */
+	  ret += atk_ms6050_get_accelerometer(&acc_x, &acc_y, &acc_z);
+	  /*  从ATK-MS6050获取陀螺仪值   ֵ */
+	  ret += atk_ms6050_get_gyroscope(&gyr_x, &gyr_y, &gyr_z);
+	  /*  从ATK-MS6050获取温度 */
+	  ret += atk_ms6050_get_temperature(&temp);
+	 /*如果上述函数调用都成功*/
+	  if (ret == 0)
+	  {
+	      if (1)
+	      {
+		  //OLED显示四元数据
+//	       	 OLED_ShowString(1, 1,"pitch:");
+//	       	 OLED_ShowString(2, 1,"yaw:");
+//	       	 OLED_ShowString(3, 1,"roll:");
+//	       	 OLED_ShowSignedNum(1, 7, pit, 4);
+//	         OLED_ShowSignedNum(2, 7, yaw, 4);
+//	         OLED_ShowSignedNum(3, 7, rol,4);
+		  //OLED显示原始数据
+		OLED_ShowSignedNum(1, 1,acc_x,4);
+		OLED_ShowSignedNum(2, 1,acc_y,4);
+		OLED_ShowSignedNum(3, 1,acc_x,4);
+		OLED_ShowSignedNum(1, 8, gyr_x, 4);
+		OLED_ShowSignedNum(2, 8, gyr_y, 4);
+		OLED_ShowSignedNum(3, 8, gyr_z,4);
+	         }
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
